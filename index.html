@@ -328,7 +328,7 @@
 <body>
 
   <!-- HIDDEN STORAGE FOR CONFIG -->
-  <div id="security-config" data-master="king18" data-pin="1234" data-birthdate="2005-09-26" data-whatsapp="919675079107" data-wa-text="OMG! Yeh surprise website kitni magical thi! Thank you so much for this! ❤️✨" data-wa-badge="💬 Express Gratitude" data-wa-expl="💡 Kyun zaroori hai thanks kehna? Kyunki itni mehnat se bani magical website bina ek 'Thank You' ke adhuri lagti hai, aur receiver ka farz banta hai ki is khubsurat gesture ka pyara sa reply dekar dil khush kare! ❤️" data-footer="Crafted with love &amp; code ✨" data-scroll-title="📜 Royal Decree of Truth" data-scroll-text="By Royal Decree, let it be known that the bearer of this name is officially proclaimed the Main Character &amp; Icon of the Year! ✨" data-scroll-img="https://raw.githubusercontent.com/itrachit/kashish-birthday/a62e643dae44506797355e2625dae82756f92c09/Screenshot_20260925-223020%20(1).png" data-glass-sound-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/14a6f17e271022e99216020d6d0c73017b763ac8/ReelAudio-84811.mp3" data-welcome-song-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/67e4591f796d8019104196c3862f2fc3f7c9e37e/ReelAudio-66433.mp3" data-scratch-sound-url="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" data-box-open-sound-url="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c352fa103b.mp3" data-cheer-song-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/a62e643dae44506797355e2625dae82756f92c09/ReelAudio-19253.mp3" data-cheer-duration="10" data-box1-text="A sweet box filled with your favorite dark chocolates &amp; treats is waiting for you! Enjoy the sweetness! ✨" data-box2-text="A symbol of eternal affection, warmth, and appreciation, specially bloomed for this day! 💖" data-box3-text="May this year bring boundless joy, success, and all the magical moments your heart desires! Keep shining! 🌟" style="display: none;"></div>
+  <div id="security-config" data-master="king18" data-pin="1234" data-birthdate="2005-09-26" data-whatsapp="919675079107" data-wa-text="OMG! Yeh surprise website kitni magical thi! Thank you so much for this! ❤️✨" data-wa-badge="💬 Express Gratitude" data-wa-expl="💡 Kyun zaroori hai thanks kehna? Kyunki itni mehnat se bani magical website bina ek 'Thank You' ke adhuri lagti hai, aur receiver ka farz banta hai ki is khubsurat gesture ka pyara sa reply dekar dil khush kare! ❤️" data-footer="Crafted with love &amp; code ✨" data-scroll-title="📜 Royal Decree of Truth" data-scroll-text="By Royal Decree, let it be known that the bearer of this name is officially proclaimed the Main Character &amp; Icon of the Year! ✨" data-scroll-img="https://raw.githubusercontent.com/itrachit/kashish-birthday/a62e643dae44506797355e2625dae82756f92c09/Screenshot_20260925-223020%20(1).png" data-glass-sound-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/14a6f17e271022e99216020d6d0c73017b763ac8/ReelAudio-84811.mp3" data-welcome-song-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/67e4591f796d8019104196c3862f2fc3f7c9e37e/ReelAudio-66433.mp3" data-ambient-song-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/e95f67ff3c23c5053d9c5b8df134bd57b6a01872/ReelAudio-30824.mp3" data-scratch-sound-url="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" data-box-open-sound-url="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c352fa103b.mp3" data-cheer-song-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/a62e643dae44506797355e2625dae82756f92c09/ReelAudio-19253.mp3" data-cheer-duration="10" data-box1-text="A sweet box filled with your favorite dark chocolates &amp; treats is waiting for you! Enjoy the sweetness! ✨" data-box2-text="A symbol of eternal affection, warmth, and appreciation, specially bloomed for this day! 💖" data-box3-text="May this year bring boundless joy, success, and all the magical moments your heart desires! Keep shining! 🌟" style="display: none;"></div>
 
   <!-- PURE GLASS CAPSULE TRIGGER -->
   <div class="glass-pill" onclick="openAdminPrompt()" title="Config"></div>
@@ -359,6 +359,7 @@
   <audio id="box-open-sound" src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c352fa103b.mp3" preload="auto"></audio>
   <audio id="cheer-audio" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_12b2c9397e.mp3" preload="auto"></audio>
   <audio id="welcome-surprise-audio" preload="auto"></audio>
+  <audio id="ambient-audio" preload="auto" loop></audio>
   <audio id="vibe-audio" loop=""></audio>
   <audio id="voicenote-audio" preload="auto"></audio>
   <audio id="shayari-audio" preload="auto"></audio>
@@ -714,7 +715,7 @@
         </div>
         <div class="admin-field-group">
           <label>💌 Shayari Voice Note MP3 Direct URL</label>
-          <input type="text" id="in-shayari-url" value="">
+          <input type="text" id="in-shayari-url" value="https://raw.githubusercontent.com/itrachit/kashish-birthday/4481bbdbf565ad0b3615bd5de424e54276c48a53/ReelAudio-22330.mp3">
           <label style="margin-top:8px;">📝 Optional Written Shayari</label>
           <textarea id="in-shayari-text" rows="3" placeholder="Yahan shayari ka text bhi likh sakte ho...">Ek chhoti si shayari, sirf tumhare liye ✨</textarea>
         </div>
@@ -753,6 +754,8 @@
           <input type="text" id="in-intro-sub" value="Tap 3 times to break the glass &amp; reveal!">
           <label style="margin-top:8px;">🎂 Birthday Song After Glass Break (MP3 Direct URL)</label>
           <input type="text" id="in-welcome-song" value="https://raw.githubusercontent.com/itrachit/kashish-birthday/67e4591f796d8019104196c3862f2fc3f7c9e37e/ReelAudio-66433.mp3">
+          <label style="margin-top:8px;">🎶 Soft Background Loop MP3 Direct URL</label>
+          <input type="text" id="in-ambient-song" value="https://raw.githubusercontent.com/itrachit/kashish-birthday/e95f67ff3c23c5053d9c5b8df134bd57b6a01872/ReelAudio-30824.mp3">
         </div>
       </div>
 
@@ -878,6 +881,7 @@
 
     const audio = document.getElementById('vibe-audio');
     const welcomeAudio = document.getElementById('welcome-surprise-audio');
+    const ambientAudio = document.getElementById('ambient-audio');
     const cheerAudio = document.getElementById('cheer-audio');
     const glassSound = document.getElementById('glass-sound');
     const scratchSound = document.getElementById('scratch-sound');
@@ -915,6 +919,7 @@
       try {
         if(audio) { audio.pause(); audio.currentTime = 0; }
         if(welcomeAudio) { welcomeAudio.pause(); welcomeAudio.currentTime = 0; }
+        if(ambientAudio) { ambientAudio.pause(); ambientAudio.currentTime = 0; }
         if(voiceNoteAudio) { voiceNoteAudio.pause(); voiceNoteAudio.currentTime = 0; }
         if(shayariAudio) { shayariAudio.pause(); shayariAudio.currentTime = 0; }
         if(cheerAudio) { cheerAudio.pause(); cheerAudio.currentTime = 0; }
@@ -954,6 +959,18 @@
     }
     setInterval(updateCounter, 1000);
 
+    function startAmbientAudio() {
+      try {
+        const ambientUrl = document.getElementById('in-ambient-song')?.value.trim() || configData.getAttribute('data-ambient-song-url') || '';
+        if (!ambientAudio || !ambientUrl) return;
+        ambientAudio.src = ambientUrl;
+        ambientAudio.loop = true;
+        ambientAudio.volume = 0.12;
+        ambientAudio.currentTime = 0;
+        ambientAudio.play().catch(() => {});
+      } catch(e) {}
+    }
+
     function toggleVoiceNote() {
       const vinyl = document.getElementById('vinylRecord');
       const voiceUrl = document.getElementById('in-voicenote-url').value;
@@ -965,6 +982,7 @@
         if(voiceUrl) {
           voiceNoteAudio.src = voiceUrl;
           voiceNoteAudio.play().then(() => { vinyl.classList.add('spinning'); }).catch(e => console.log(e));
+          voiceNoteAudio.onended = () => { vinyl.classList.remove('spinning'); startAmbientAudio(); };
         }
       }
     }
@@ -989,6 +1007,7 @@
       }
       shayariAudio.onended = () => {
         btn.innerHTML = 'Click to Play Shayari <span class="emoji-clean">🎧</span>';
+        startAmbientAudio();
       };
     }
 
@@ -1069,6 +1088,7 @@
             try {
               welcomeAudio.src = songUrl;
               welcomeAudio.currentTime = 0;
+              welcomeAudio.onended = () => { startAmbientAudio(); };
               welcomeAudio.play().catch(() => {});
             } catch(err) {}
           }, 1300);
@@ -1383,6 +1403,7 @@
       document.getElementById('disp-scroll-img').src = document.getElementById('in-scroll-img').value;
       document.getElementById('disp-shayari-text').innerText = document.getElementById('in-shayari-text').value;
       welcomeSongUrl = document.getElementById('in-welcome-song').value.trim();
+      configData.setAttribute('data-ambient-song-url', document.getElementById('in-ambient-song').value.trim());
 
       renderGallery(document.getElementById('in-photos-list').value.split(','));
       renderMemes(document.getElementById('in-memes-list').value.split(','));
@@ -1457,6 +1478,8 @@
     window.onload = () => {
       const welcomeInput = document.getElementById('in-welcome-song');
       if (welcomeInput && welcomeSongUrl) welcomeInput.value = welcomeSongUrl;
+      const ambientInput = document.getElementById('in-ambient-song');
+      if (ambientInput) ambientInput.value = configData.getAttribute('data-ambient-song-url') || ambientInput.value;
       const shayariTextInput = document.getElementById('in-shayari-text');
       if (shayariTextInput) document.getElementById('disp-shayari-text').innerText = shayariTextInput.value;
       renderGallery(document.getElementById('in-photos-list').value.split(','));
