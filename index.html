@@ -110,8 +110,16 @@
     .glass-card:hover { transform: translateY(-3px); border-color: rgba(255, 107, 139, 0.3); }
 
     .profile-hero {
-      width: 135px; height: 135px; border-radius: 50%; object-fit: cover;
-      border: 3px solid var(--accent-pink); box-shadow: 0 0 30px rgba(255, 107, 139, 0.5); margin-bottom: 12px;
+      width: 165px; height: 165px; border-radius: 50%; object-fit: cover;
+      border: 4px solid rgba(255, 177, 193, 0.95);
+      box-shadow:
+        0 0 0 5px rgba(255, 107, 139, 0.12),
+        0 0 0 10px rgba(138, 43, 226, 0.08),
+        0 0 38px rgba(255, 107, 139, 0.48),
+        0 14px 32px rgba(0, 0, 0, 0.38);
+      margin-bottom: 15px;
+      padding: 2px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,107,139,0.18));
     }
 
     .aesthetic-title-wrapper {
@@ -320,7 +328,7 @@
 <body>
 
   <!-- HIDDEN STORAGE FOR CONFIG -->
-  <div id="security-config" data-master="king18" data-pin="1234" data-birthdate="2005-09-26" data-whatsapp="919675079107" data-wa-text="OMG! Yeh surprise website kitni magical thi! Thank you so much for this! ❤️✨" data-wa-badge="💬 Express Gratitude" data-wa-expl="💡 Kyun zaroori hai thanks kehna? Kyunki itni mehnat se bani magical website bina ek 'Thank You' ke adhuri lagti hai, aur receiver ka farz banta hai ki is khubsurat gesture ka pyara sa reply dekar dil khush kare! ❤️" data-footer="Crafted with love &amp; code ✨" data-scroll-title="📜 Royal Decree of Truth" data-scroll-text="By Royal Decree, let it be known that the bearer of this name is officially proclaimed the Main Character &amp; Icon of the Year! ✨" data-scroll-img="https://raw.githubusercontent.com/itrachit/kashish-birthday/a62e643dae44506797355e2625dae82756f92c09/Screenshot_20260925-223020%20(1).png" data-glass-sound-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/14a6f17e271022e99216020d6d0c73017b763ac8/ReelAudio-84811.mp3" data-scratch-sound-url="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" data-box-open-sound-url="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c352fa103b.mp3" data-cheer-song-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/a62e643dae44506797355e2625dae82756f92c09/ReelAudio-19253.mp3" data-cheer-duration="10" data-box1-text="A sweet box filled with your favorite dark chocolates &amp; treats is waiting for you! Enjoy the sweetness! ✨" data-box2-text="A symbol of eternal affection, warmth, and appreciation, specially bloomed for this day! 💖" data-box3-text="May this year bring boundless joy, success, and all the magical moments your heart desires! Keep shining! 🌟" style="display: none;"></div>
+  <div id="security-config" data-master="king18" data-pin="1234" data-birthdate="2005-09-26" data-whatsapp="919675079107" data-wa-text="OMG! Yeh surprise website kitni magical thi! Thank you so much for this! ❤️✨" data-wa-badge="💬 Express Gratitude" data-wa-expl="💡 Kyun zaroori hai thanks kehna? Kyunki itni mehnat se bani magical website bina ek 'Thank You' ke adhuri lagti hai, aur receiver ka farz banta hai ki is khubsurat gesture ka pyara sa reply dekar dil khush kare! ❤️" data-footer="Crafted with love &amp; code ✨" data-scroll-title="📜 Royal Decree of Truth" data-scroll-text="By Royal Decree, let it be known that the bearer of this name is officially proclaimed the Main Character &amp; Icon of the Year! ✨" data-scroll-img="https://raw.githubusercontent.com/itrachit/kashish-birthday/a62e643dae44506797355e2625dae82756f92c09/Screenshot_20260925-223020%20(1).png" data-glass-sound-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/14a6f17e271022e99216020d6d0c73017b763ac8/ReelAudio-84811.mp3" data-welcome-song-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/67e4591f796d8019104196c3862f2fc3f7c9e37e/ReelAudio-66433.mp3" data-scratch-sound-url="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" data-box-open-sound-url="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c352fa103b.mp3" data-cheer-song-url="https://raw.githubusercontent.com/itrachit/kashish-birthday/a62e643dae44506797355e2625dae82756f92c09/ReelAudio-19253.mp3" data-cheer-duration="10" data-box1-text="A sweet box filled with your favorite dark chocolates &amp; treats is waiting for you! Enjoy the sweetness! ✨" data-box2-text="A symbol of eternal affection, warmth, and appreciation, specially bloomed for this day! 💖" data-box3-text="May this year bring boundless joy, success, and all the magical moments your heart desires! Keep shining! 🌟" style="display: none;"></div>
 
   <!-- PURE GLASS CAPSULE TRIGGER -->
   <div class="glass-pill" onclick="openAdminPrompt()" title="Config"></div>
@@ -353,6 +361,7 @@
   <audio id="welcome-surprise-audio" preload="auto"></audio>
   <audio id="vibe-audio" loop=""></audio>
   <audio id="voicenote-audio" preload="auto"></audio>
+  <audio id="shayari-audio" preload="auto"></audio>
 
   <!-- Floating Balloons Layer -->
   <div class="balloon-container" id="balloonBox"></div>
@@ -535,7 +544,14 @@
       <button class="btn-action" style="margin-top: 5px; background: linear-gradient(45deg, #ff6b8b, #7b2cbf);" onclick="toggleVoiceNote()">Click to Play Voice Note <span class="emoji-clean">🎧</span></button>
     </div>
 
-    <!-- 13. SECRET VAULT -->
+    <!-- 13. PRIVATE SHAYARI NOTE -->
+    <div class="glass-card special-vip-card">
+      <div class="section-title" style="color: #f3b1ff;"><span class="emoji-clean">💌</span> A Secret Shayari For You</div>
+      <p id="disp-shayari-text" style="font-family: 'Caveat', cursive; font-size: 1.25rem; line-height: 1.45; color: #eee; margin: 10px auto 14px; max-width: 560px;">Ek chhoti si shayari, sirf tumhare liye ✨</p>
+      <button class="btn-action" id="shayariBtn" style="background: linear-gradient(45deg, #8a2be2, #ff6b8b);" onclick="toggleShayari()">Click to Play Shayari <span class="emoji-clean">🎧</span></button>
+    </div>
+
+    <!-- 14. SECRET VAULT -->
     <div class="glass-card">
       <div class="section-title"><span class="emoji-clean">🔒</span> Secret Message Vault</div>
       <p style="font-size: 0.78rem; color: #aaa; margin-bottom: 10px;">Enter PIN to unlock</p>
@@ -546,13 +562,13 @@
       </div>
     </div>
 
-    <!-- 14. SPECIAL LETTER BUTTON -->
+    <!-- 15. SPECIAL LETTER BUTTON -->
     <div class="glass-card">
       <div class="section-title"><span class="emoji-clean">💌</span> Special Birthday Card</div>
       <button class="btn-action" style="background: linear-gradient(45deg, #ff6b8b, #8a2be2);" onclick="openLetterModal()">Click to Open Letter <span class="emoji-clean">📜</span></button>
     </div>
 
-    <!-- 15. AESTHETIC WHATSAPP DIRECT REPLY CARD -->
+    <!-- 16. AESTHETIC WHATSAPP DIRECT REPLY CARD -->
     <div class="glass-card whatsapp-saas-card">
       <div class="whatsapp-badge" id="disp-wa-badge"><span class="emoji-clean">💬</span> Express Gratitude</div>
       <div class="section-title" style="color: #25d366;">Instant Reaction</div>
@@ -697,6 +713,12 @@
           <input type="text" id="in-voicenote-url" value="https://raw.githubusercontent.com/itrachit/kashish-birthday/6244e74e3ff33d4e2002950b3936b72faf26f180/ReelAudio-26281.mp3">
         </div>
         <div class="admin-field-group">
+          <label>💌 Shayari Voice Note MP3 Direct URL</label>
+          <input type="text" id="in-shayari-url" value="">
+          <label style="margin-top:8px;">📝 Optional Written Shayari</label>
+          <textarea id="in-shayari-text" rows="3" placeholder="Yahan shayari ka text bhi likh sakte ho...">Ek chhoti si shayari, sirf tumhare liye ✨</textarea>
+        </div>
+        <div class="admin-field-group">
           <label>🎡 Spin Wheel Favors (Comma Separated)</label>
           <input type="text" id="in-wheel-items" value="🍕 Pizza Treat, ☕ Long Drive, 🎬 Movie Night, 🍦 Ice Cream, 🤫 1 Secret Wish">
         </div>
@@ -729,6 +751,8 @@
         <div class="admin-field-group">
           <label>Glass Intro Subtitle</label>
           <input type="text" id="in-intro-sub" value="Tap 3 times to break the glass &amp; reveal!">
+          <label style="margin-top:8px;">🎂 Birthday Song After Glass Break (MP3 Direct URL)</label>
+          <input type="text" id="in-welcome-song" value="https://raw.githubusercontent.com/itrachit/kashish-birthday/67e4591f796d8019104196c3862f2fc3f7c9e37e/ReelAudio-66433.mp3">
         </div>
       </div>
 
@@ -836,6 +860,7 @@
     let waBadgeStr = configData.getAttribute('data-wa-badge') || "💬 Express Gratitude";
     let waExplStr = configData.getAttribute('data-wa-expl') || "💡 Kyun zaroori hai thanks kehna? Kyunki itni mehnat se bani magical website bina ek 'Thank You' ke adhuri lagti hai, aur receiver ka farz banta hai ki is khubsurat gesture ka pyara sa reply dekar dil khush kare! ❤️";
     let footerTagStr = configData.getAttribute('data-footer') || "Crafted with love & code ✨";
+    let welcomeSongUrl = configData.getAttribute('data-welcome-song-url') || "";
     
     let box1ContentText = configData.getAttribute('data-box1-text') || "A sweet box filled with your favorite dark chocolates & treats is waiting for you! Enjoy the sweetness! ✨";
     let box2ContentText = configData.getAttribute('data-box2-text') || "A symbol of eternal affection, warmth, and appreciation, specially bloomed for this day! 💖";
@@ -858,6 +883,7 @@
     const scratchSound = document.getElementById('scratch-sound');
     const boxOpenSound = document.getElementById('box-open-sound');
     const voiceNoteAudio = document.getElementById('voicenote-audio');
+    const shayariAudio = document.getElementById('shayari-audio');
     let activeVibe = null;
 
     function updateWhatsAppLink() {
@@ -890,6 +916,7 @@
         if(audio) { audio.pause(); audio.currentTime = 0; }
         if(welcomeAudio) { welcomeAudio.pause(); welcomeAudio.currentTime = 0; }
         if(voiceNoteAudio) { voiceNoteAudio.pause(); voiceNoteAudio.currentTime = 0; }
+        if(shayariAudio) { shayariAudio.pause(); shayariAudio.currentTime = 0; }
         if(cheerAudio) { cheerAudio.pause(); cheerAudio.currentTime = 0; }
       } catch(e) {}
       document.querySelectorAll('.vibe-btn').forEach(btn => btn.classList.remove('playing'));
@@ -940,6 +967,29 @@
           voiceNoteAudio.play().then(() => { vinyl.classList.add('spinning'); }).catch(e => console.log(e));
         }
       }
+    }
+
+    function toggleShayari() {
+      const btn = document.getElementById('shayariBtn');
+      const shayariUrl = document.getElementById('in-shayari-url').value.trim();
+      if (!shayariUrl) {
+        openAestheticModal("💌 Shayari Note", "Admin panel me Shayari Voice Note ka MP3 URL add karo.");
+        return;
+      }
+      if (!shayariAudio.paused) {
+        shayariAudio.pause();
+        btn.innerHTML = 'Click to Play Shayari <span class="emoji-clean">🎧</span>';
+      } else {
+        stopAllAudioTracks();
+        shayariAudio.src = shayariUrl;
+        shayariAudio.currentTime = 0;
+        shayariAudio.play().then(() => {
+          btn.innerHTML = 'Pause Shayari <span class="emoji-clean">⏸️</span>';
+        }).catch(() => {});
+      }
+      shayariAudio.onended = () => {
+        btn.innerHTML = 'Click to Play Shayari <span class="emoji-clean">🎧</span>';
+      };
     }
 
     let wheelItems = ["🍕 Pizza Party", "☕ Long Drive", "🎬 Movie Night", "🍦 Ice Cream", "🤫 1 Secret Wish"];
@@ -1011,6 +1061,18 @@
         glass.classList.add('shattered');
         confetti({ particleCount: 140, spread: 85, origin: { y: 0.5 } });
         startAmbientConfetti();
+
+        // Keep the glass-break sound first, then start the birthday song.
+        const songUrl = document.getElementById('in-welcome-song')?.value.trim() || welcomeSongUrl;
+        if (songUrl) {
+          setTimeout(() => {
+            try {
+              welcomeAudio.src = songUrl;
+              welcomeAudio.currentTime = 0;
+              welcomeAudio.play().catch(() => {});
+            } catch(err) {}
+          }, 1300);
+        }
       }
     }
 
@@ -1319,6 +1381,8 @@
       document.getElementById('disp-scroll-title').innerText = document.getElementById('in-scroll-title').value;
       document.getElementById('disp-scroll-text').innerText = document.getElementById('in-scroll-text').value;
       document.getElementById('disp-scroll-img').src = document.getElementById('in-scroll-img').value;
+      document.getElementById('disp-shayari-text').innerText = document.getElementById('in-shayari-text').value;
+      welcomeSongUrl = document.getElementById('in-welcome-song').value.trim();
 
       renderGallery(document.getElementById('in-photos-list').value.split(','));
       renderMemes(document.getElementById('in-memes-list').value.split(','));
@@ -1355,6 +1419,7 @@
       configData.setAttribute('data-scroll-title', document.getElementById('in-scroll-title').value);
       configData.setAttribute('data-scroll-text', document.getElementById('in-scroll-text').value);
       configData.setAttribute('data-scroll-img', document.getElementById('in-scroll-img').value);
+      configData.setAttribute('data-welcome-song-url', welcomeSongUrl);
       configData.setAttribute('data-glass-sound-url', document.getElementById('in-glass-sound').value);
       configData.setAttribute('data-scratch-sound-url', document.getElementById('in-scratch-sound').value);
       configData.setAttribute('data-box-open-sound-url', document.getElementById('in-box-open-sound').value);
@@ -1390,6 +1455,10 @@
     }
 
     window.onload = () => {
+      const welcomeInput = document.getElementById('in-welcome-song');
+      if (welcomeInput && welcomeSongUrl) welcomeInput.value = welcomeSongUrl;
+      const shayariTextInput = document.getElementById('in-shayari-text');
+      if (shayariTextInput) document.getElementById('disp-shayari-text').innerText = shayariTextInput.value;
       renderGallery(document.getElementById('in-photos-list').value.split(','));
       renderMemes(document.getElementById('in-memes-list').value.split(','));
       renderQualities(document.getElementById('in-qualities').value.split(','));
