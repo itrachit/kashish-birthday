@@ -323,7 +323,10 @@
       outline: none; border-color: var(--accent-pink); background: rgba(0, 0, 0, 0.7);
       box-shadow: 0 0 15px rgba(255, 107, 139, 0.3);
     }
-  </style>
+  
+    /* Scratch/Coupon section intentionally hidden; underlying JS remains intact. */
+    #scratchCardSection { display: none !important; }
+</style>
 </head><c-toggler style="transform: translate(2px, 395.5px); display: none;"></c-toggler>
 <body>
 
@@ -359,7 +362,7 @@
   <audio id="box-open-sound" src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c352fa103b.mp3" preload="auto"></audio>
   <audio id="cheer-audio" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_12b2c9397e.mp3" preload="auto"></audio>
   <audio id="welcome-surprise-audio" preload="auto"></audio>
-  <audio id="ambient-audio" preload="auto" loop></audio>
+  <audio id="ambient-audio" loop preload="auto" loop></audio>
   <audio id="vibe-audio" loop=""></audio>
   <audio id="voicenote-audio" preload="auto"></audio>
   <audio id="shayari-audio" preload="auto"></audio>
@@ -474,8 +477,8 @@
       <div class="meme-carousel-box" id="memeCarouselContainer"><div class="meme-slide active"><img src=""><div class="meme-caption-bar">Gotta love this face 🤪</div></div></div>
     </div>
 
-    <!-- 7. SCRATCH CARD SECTION -->
-    <div class="glass-card">
+    <!-- 7. SCRATCH CARD SECTION (hidden to preserve existing JS safely) -->
+    <div class="glass-card" id="scratchCardSection" style="display:none !important;">
       <div class="section-title"><span class="emoji-clean">🎁</span> Birthday Treat Sponsor</div>
       <p style="font-size: 0.8rem; color: #aaa;" id="disp-coupon-desc">Scratch the card below to reveal your treat coupon!</p>
       
@@ -607,8 +610,13 @@
   <div class="modal-overlay" id="letterModal" onclick="handleBackdropClick(event, 'letterModal')">
     <div class="popup-card" style="text-align: left;">
       <div class="close-cross-btn" onclick="closeLetterModal()">×</div>
-      <h3 style="color: #ff6b8b; margin-bottom: 12px; text-align: center; font-size: 1.25rem;"><span class="emoji-clean">✨</span> Birthday Wish <span class="emoji-clean">✨</span></h3>
-      <div style="background: #fdfbf7; color: #222; font-family: 'Caveat', cursive; font-size: 1.35rem; padding: 20px; border-radius: 16px; line-height: 1.5;" id="disp-final-card">Dear Birthday Person, May your year ahead be as bright, beautiful, and genuine as your heart. Never stop shining! 🌸</div>
+      <h3 style="color: #ffd34e; margin-bottom: 14px; text-align: center; font-family: Georgia, 'Times New Roman', serif; font-size: 1.65rem; font-weight: 700; text-shadow: 0 2px 12px rgba(255,211,78,.18);">Happy birthday 🎀</h3>
+      <div style="background: transparent; color: #ffd34e; font-family: Georgia, 'Times New Roman', serif; font-size: 1.32rem; font-weight: 700; text-align: center; padding: 8px 10px 4px; border-radius: 16px; line-height: 1.12; white-space: pre-line; text-shadow: 0 2px 12px rgba(255,211,78,.12);" id="disp-final-card">Happy Birthday to the most special person in my life!
+On your special day, I just want you to know how much you mean to me.
+You bring light, laughter, and so much love wherever you go.
+May your day be filled with all the happiness you deserve, and may this year bring you endless success, peace, and joy.
+Always stay the amazing person you are — the world is better with you in it. 👀
+Love you always. 🕊️🌷</div>
     </div>
   </div>
 
@@ -843,7 +851,12 @@
         </div>
         <div class="admin-field-group">
           <label>Final Birthday Card Letter</label>
-          <textarea id="in-final-card" rows="4">Dear Birthday Person, May your year ahead be as bright, beautiful, and genuine as your heart. Never stop shining! 🌸</textarea>
+          <textarea id="in-final-card" rows="7">Happy Birthday to the most special person in my life!
+On your special day, I just want you to know how much you mean to me.
+You bring light, laughter, and so much love wherever you go.
+May your day be filled with all the happiness you deserve, and may this year bring you endless success, peace, and joy.
+Always stay the amazing person you are — the world is better with you in it. 👀
+Love you always. 🕊️🌷</textarea>
         </div>
       </div>
 
@@ -965,7 +978,7 @@
         if (!ambientAudio || !ambientUrl) return;
         ambientAudio.src = ambientUrl;
         ambientAudio.loop = true;
-        ambientAudio.volume = 0.12;
+        ambientAudio.volume = 0.025;
         ambientAudio.currentTime = 0;
         ambientAudio.play().catch(() => {});
       } catch(e) {}
