@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Special Surprise For You ✨</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #070514;
+      --accent-pink: #ff6b8b;
+      --accent-purple: #8a2be2;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --text-main: #f8f9fa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(255, 107, 139, 0.18) 0px, transparent 40%),
+        radial-gradient(at 90% 90%, rgba(138, 43, 226, 0.22) 0px, transparent 40%),
+        radial-gradient(at 50% 50%, rgba(15, 10, 35, 0.8) 0px, transparent 100%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 60px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* REALISTIC BOUNDED GLASS INTRO */
+    .glass-intro-screen {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+      z-index: 9999; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 20px; transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer; border: 1px solid rgba(255,255,255,0.15);
+      overflow: hidden; contain: strict;
+    }
+    .glass-intro-screen.shake { animation: glassShake 0.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+    .glass-intro-screen.shattered { opacity: 0; transform: scale(1.15); pointer-events: none; visibility: hidden; }
+
+    @keyframes glassShake {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      20% { transform: translate3d(-6px, 3px, 0); }
+      40% { transform: translate3d(6px, -3px, 0); }
+      60% { transform: translate3d(-4px, -2px, 0); }
+      80% { transform: translate3d(4px, 2px, 0); }
+    }
+
+    .intro-card {
+      position: relative; z-index: 10;
+      background: rgba(18, 14, 38, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 35px 25px; border-radius: 32px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6); max-width: 420px; width: 90%;
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .crack-svg-container {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 2; overflow: hidden; opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .tap-hammer-btn {
+      position: relative; z-index: 5;
+      width: 75px; height: 75px; background: rgba(255, 107, 139, 0.18);
+      border: 2px solid var(--accent-pink); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 20px auto 0 auto; font-size: 2rem;
+      animation: pulseGlow 1.5s infinite alternate ease-in-out;
+    }
+    @keyframes pulseGlow {
+      0% { transform: scale(0.95); box-shadow: 0 0 10px rgba(255,107,139,0.3); }
+      100% { transform: scale(1.08); box-shadow: 0 0 25px rgba(255,107,139,0.8); }
+    }
+
+    .container { max-width: 600px; margin: 0 auto; padding: 20px 15px; }
+
+    /* PURE GLASS CAPSULE TRIGGER */
+    .glass-pill {
+      position: fixed; top: 18px; right: 18px; width: 40px; height: 20px;
+      background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 20px;
+      cursor: pointer; z-index: 2000; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .glass-pill:hover { background: rgba(255, 107, 139, 0.3); border-color: var(--accent-pink); }
+
+    /* Bento-Style Aesthetic Glass Cards */
+    .glass-card {
+      background: var(--glass-bg); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px; padding: 26px 20px; margin-bottom: 22px; text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.45); position: relative;
+      transform: translateZ(0); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover { transform: translateY(-3px); border-color: rgba(255, 107, 139, 0.3); }
+
+    .profile-hero {
+      width: 135px; height: 135px; border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--accent-pink); box-shadow: 0 0 30px rgba(255, 107, 139, 0.5); margin-bottom: 12px;
+    }
+
+    .aesthetic-title-wrapper {
+      font-family: 'Caveat', cursive; font-size: 3.2rem; line-height: 1.1; margin-bottom: 6px;
+    }
+    .aesthetic-title-text {
+      background: linear-gradient(45deg, #ff6b8b, #ffa8a8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .emoji-clean { -webkit-text-fill-color: initial !important; display: inline-block; }
+
+    .section-title {
+      font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; color: #ffb1c1;
+    }
+
+    /* COMPACT SLEEK LIVE COUNTER BAR */
+    .compact-counter-bar {
+      display: flex; justify-content: space-around; align-items: center;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border);
+      border-radius: 18px; padding: 10px 6px; margin-top: 15px;
+    }
+    .cnt-item { text-align: center; flex: 1; }
+    .cnt-item:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.08); }
+    .cnt-val { font-size: 1.15rem; font-weight: 700; color: var(--accent-pink); font-family: monospace; }
+    .cnt-lbl { font-size: 0.65rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* SPECIAL VIP VOICE NOTE SPOTLIGHT CARD */
+    .special-vip-card {
+      background: linear-gradient(145deg, rgba(30, 20, 55, 0.7), rgba(15, 10, 35, 0.8));
+      border: 1px solid rgba(255, 107, 139, 0.4);
+      box-shadow: 0 0 30px rgba(255, 107, 139, 0.15), 0 20px 40px rgba(0,0,0,0.5);
+    }
+    
+    .vinyl-wrapper {
+      position: relative; width: 130px; height: 130px; margin: 15px auto;
+      border-radius: 50%; background: #111; border: 4px solid #222;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+    }
+    .vinyl-record {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: repeating-radial-gradient(#111, #111 2px, #222 3px, #111 4px);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.5s ease;
+    }
+    .vinyl-record.spinning { animation: vinylRotate 3s linear infinite; }
+    @keyframes vinylRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .vinyl-center-label { width: 42px; height: 42px; border-radius: 50%; background: var(--accent-pink); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: bold; color: #fff; text-align: center; }
+
+    /* Spin The Wheel Widget */
+    .wheel-container { position: relative; width: 230px; height: 230px; margin: 15px auto; }
+    #wheelCanvas { width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 20px rgba(255, 107, 139, 0.3); border: 3px solid var(--glass-border); }
+    .wheel-pointer {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 22px solid var(--accent-pink);
+      z-index: 10; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+    }
+
+    /* Carousel Sliders */
+    .carousel-box { position: relative; width: 100%; height: 270px; border-radius: 20px; overflow: hidden; background: rgba(0,0,0,0.3); }
+    .carousel-slide { width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; opacity: 0; transition: opacity 0.8s ease; }
+    .carousel-slide.active { opacity: 1; }
+
+    /* Meme Carousel */
+    .meme-carousel-box { position: relative; width: 100%; height: 300px; border-radius: 20px; overflow: hidden; background: rgba(0,0,0,0.3); }
+    .meme-slide { width: 100%; height: 100%; position: absolute; top:0; left:0; opacity: 0; transition: opacity 0.8s ease; display: flex; flex-direction: column; }
+    .meme-slide.active { opacity: 1; }
+    .meme-slide img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px 20px 0 0; }
+    .meme-caption-bar { height: 50px; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; font-family: 'Caveat', cursive; font-size: 1.3rem; color: #ffb1c1; }
+
+    /* Personality Jukebox Grid */
+    .vibe-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+    .vibe-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 12px; border-radius: 16px; color: white; cursor: pointer; transition: 0.3s ease; font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
+    .vibe-btn:hover, .vibe-btn.playing { background: var(--accent-pink); border-color: var(--accent-pink); }
+
+    /* CAKE & MULTI-CANDLES SECTION */
+    .cake-svg-wrapper { width: 220px; height: 180px; margin: 10px auto; position: relative; transition: all 0.6s ease; }
+    .flame-element { transform-origin: center bottom; animation: flameFlicker 0.6s infinite alternate ease-in-out; transition: opacity 0.4s ease, transform 0.4s ease; }
+    .flame-element.off { opacity: 0; transform: scale(0); }
+    @keyframes flameFlicker { 0% { transform: scale(1) rotate(-2deg); } 100% { transform: scale(1.1) rotate(2deg); } }
+
+    /* PREMIUM 3D MYSTERY BOXES */
+    .mystery-boxes-container {
+      display: none; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px;
+      animation: fadeInBoxes 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeInBoxes { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+    .mystery-box {
+      background: linear-gradient(145deg, rgba(40, 25, 75, 0.85), rgba(18, 12, 42, 0.95));
+      border: 1.5px solid rgba(255, 107, 139, 0.5); border-radius: 22px; padding: 24px 12px;
+      text-align: center; cursor: pointer; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2); position: relative; overflow: hidden;
+    }
+    .mystery-box:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 18px 40px rgba(255,107,139,0.35); border-color: var(--accent-pink); }
+    .box-icon { font-size: 2.3rem; margin-bottom: 8px; transition: transform 0.4s ease; filter: drop-shadow(0 2px 8px rgba(255,107,139,0.4)); }
+    .mystery-box:hover .box-icon { transform: scale(1.25) rotate(10deg); }
+    .box-title { font-size: 0.9rem; font-weight: 700; color: #ffb1c1; text-transform: uppercase; letter-spacing: 0.8px; }
+    .mystery-box.opened {
+      background: linear-gradient(145deg, rgba(20, 15, 40, 0.9), rgba(8, 5, 20, 0.95));
+      border-color: rgba(255, 255, 255, 0.2); opacity: 0.85; box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+    }
+
+    /* SCRATCH CARD CONTAINER */
+    .scratch-container { position: relative; width: 100%; max-width: 380px; height: 130px; margin: 15px auto 0 auto; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: 1px solid var(--glass-border); }
+    .scratch-secret-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255,107,139,0.25), rgba(138,43,226,0.35)); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px; text-align: center; }
+    .scratch-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; z-index: 5; touch-action: none; }
+
+    /* COUPON USAGE INFO BOX */
+    .coupon-info-card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border); border-radius: 18px; padding: 15px; margin-top: 12px; text-align: left; }
+    .info-badge { display: inline-block; background: var(--accent-pink); color: #fff; font-size: 0.72rem; font-weight: bold; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
+
+    /* Qualities & Envelopes */
+    .qualities-flex { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .quality-pill { background: rgba(255, 255, 255, 0.07); border: 1px solid var(--glass-border); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; }
+    
+    .open-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .open-card { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); padding: 14px; border-radius: 16px; cursor: pointer; transition: background 0.3s ease, transform 0.3s ease; }
+    .open-card:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
+
+    .vault-input { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 10px; color: #fff; text-align: center; border-radius: 10px; width: 120px; font-size: 1.05rem; }
+    .btn-action { background: var(--accent-pink); border: none; color: white; padding: 11px 22px; border-radius: 14px; font-weight: 600; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+    .btn-action:hover { transform: scale(1.02); }
+
+    /* ULTRA-AESTHETIC MATCHING WHATSAPP SAAS CARD */
+    .whatsapp-saas-card {
+      background: linear-gradient(145deg, rgba(15, 30, 20, 0.65), rgba(8, 18, 12, 0.8));
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      box-shadow: 0 0 30px rgba(37, 211, 102, 0.1), 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .whatsapp-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(37, 211, 102, 0.18); border: 1px solid rgba(37, 211, 102, 0.4);
+      padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700;
+      color: #25d366; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+    }
+
+    /* MODAL OVERLAY & POPUP */
+    .modal-overlay {
+      display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(5, 3, 15, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      z-index: 3000; justify-content: center; align-items: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+    .popup-card {
+      position: relative;
+      background: linear-gradient(145deg, #181233, #0d0822);
+      border: 1px solid rgba(255, 107, 139, 0.35);
+      width: 88%; max-width: 420px; padding: 32px 24px 24px 24px; border-radius: 28px;
+      text-align: center; color: #fff; box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+      transform: scale(0.92) translateZ(0); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.active .popup-card { transform: scale(1) translateZ(0); }
+
+    .close-cross-btn {
+      position: absolute; top: 14px; right: 16px;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.25s ease; user-select: none;
+    }
+    .close-cross-btn:hover {
+      background: var(--accent-pink); color: #fff; border-color: var(--accent-pink);
+      transform: rotate(90deg);
+    }
+
+    .balloon-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; overflow: hidden; display: none; }
+    .balloon-item { position: absolute; bottom: -100px; width: 40px; height: 50px; border-radius: 50%; animation: floatUp 5s linear forwards; }
+    @keyframes floatUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-110vh); opacity: 0; } }
+
+    /* ULTRA-LUXURY SPACIOUS ADMIN PANEL (NO MORE KHICH-PICH) */
+    .admin-drawer {
+      position: relative;
+      background: linear-gradient(160deg, #181238 0%, #080616 100%);
+      border: 1.5px solid rgba(255, 107, 139, 0.4);
+      width: 96%; max-width: 680px; padding: 35px 28px; border-radius: 36px;
+      max-height: 88vh; overflow-y: auto; color: #fff; text-align: left;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.98);
+      scrollbar-width: thin; scrollbar-color: var(--accent-pink) transparent;
+    }
+    .admin-grid-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 22px; padding: 22px; margin-bottom: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .admin-card-head {
+      font-size: 0.92rem; font-weight: 700; color: #ffb1c1; text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 10px;
+    }
+    .admin-field-group { margin-bottom: 15px; }
+    .admin-drawer label { font-size: 0.86rem; color: #dfe6e9; font-weight: 600; display: block; margin-bottom: 7px; }
+    .admin-drawer input, .admin-drawer textarea {
+      width: 100%; padding: 12px 16px; background: rgba(0, 0, 0, 0.5);
+      border: 1.5px solid rgba(255, 255, 255, 0.18); color: #fff; border-radius: 14px;
+      font-size: 0.95rem; font-family: inherit; transition: all 0.25s ease;
+    }
+    .admin-drawer input:focus, .admin-drawer textarea:focus {
+      outline: none; border-color: var(--accent-pink); background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 15px rgba(255, 107, 139, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HIDDEN STORAGE FOR CONFIG -->
+  <div id="security-config" data-master="king18" data-pin="1234" data-birthdate="2002-05-15" data-whatsapp="919876543210" data-wa-text="OMG! Yeh surprise website kitni magical thi! Thank you so much for this! ❤️✨" data-wa-badge="💬 Express Gratitude" data-wa-expl="💡 Kyun zaroori hai thanks kehna? Kyunki itni mehnat se bani magical website bina ek 'Thank You' ke adhuri lagti hai, aur receiver ka farz banta hai ki is khubsurat gesture ka pyara sa reply dekar dil khush kare! ❤️" data-footer="Crafted with love & code ✨" data-scroll-title="📜 Royal Decree of Truth" data-scroll-text="By Royal Decree, let it be known that the bearer of this name is officially proclaimed the Main Character & Icon of the Year! ✨" data-scroll-img="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400" data-glass-sound-url="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c3558c422c.mp3" data-scratch-sound-url="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" data-box-open-sound-url="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c352fa103b.mp3" data-cheer-song-url="https://cdn.pixabay.com/download/audio/2021/08/04/audio_12b2c9397e.mp3" data-cheer-duration="10" data-box1-text="A sweet box filled with your favorite dark chocolates & treats is waiting for you! Enjoy the sweetness! ✨" data-box2-text="A symbol of eternal affection, warmth, and appreciation, specially bloomed for this day! 💖" data-box3-text="May this year bring boundless joy, success, and all the magical moments your heart desires! Keep shining! 🌟" style="display: none;"></div>
+
+  <!-- PURE GLASS CAPSULE TRIGGER -->
+  <div class="glass-pill" onclick="openAdminPrompt()" title="Config"></div>
+
+  <!-- MULTI-TAP GLASS SHATTER INTRO -->
+  <div class="glass-intro-screen" id="glassIntro" onclick="handleGlassTap(event)">
+    <div class="intro-card">
+      <svg class="crack-svg-container" id="crackOverlay1" viewBox="0 0 500 500" preserveAspectRatio="none">
+        <path d="M250 250 L180 120 L120 40 M250 250 L360 140 L440 60 M250 250 L420 260 L480 270 M250 250 L340 370 L420 460 M250 250 L240 400 L230 480 M250 250 L130 360 L60 440 M250 250 L80 260 L20 270 M250 250 L140 150 L80 80" stroke="rgba(255,255,255,0.95)" stroke-width="2.5" fill="none" stroke-linecap="round" />
+        <path d="M180 120 L130 140 M360 140 L410 180 M340 370 L290 410 M130 360 L90 310" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" fill="none" stroke-linecap="round" />
+      </svg>
+      <svg class="crack-svg-container" id="crackOverlay2" viewBox="0 0 500 500" preserveAspectRatio="none">
+        <path d="M210 200 Q250 180 290 200 Q320 240 290 290 Q250 310 200 280 Q180 240 210 200 Z" stroke="rgba(255,255,255,0.88)" stroke-width="2" fill="none" />
+        <path d="M160 140 Q250 100 340 140 Q400 240 340 350 Q250 390 150 340 Q100 240 160 140 Z" stroke="rgba(255,255,255,0.65)" stroke-width="1.5" stroke-dasharray="8,4" fill="none" />
+      </svg>
+
+      <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.78rem; color: #ff6b8b; font-weight: 600;" id="disp-intro-tag">A Special Gift For You</p>
+      <h2 style="font-size: 1.7rem; margin: 10px 0; color: #fff;" id="disp-intro-sender">Someone Sent You A Secret Surprise <span class="emoji-clean">🎁</span></h2>
+      <p style="font-size: 0.88rem; color: #aaa;" id="disp-intro-sub">Tap 3 times to break the glass & reveal!</p>
+      <div class="tap-hammer-btn"><span class="emoji-clean">🔨</span></div>
+      <p style="font-size: 0.75rem; color: #ff6b8b; margin-top: 12px; font-weight: 600;" id="tapCounterText">Taps remaining: 3</p>
+    </div>
+  </div>
+
+  <!-- AUDIO ELEMENTS -->
+  <audio id="glass-sound" src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c3558c422c.mp3" preload="auto"></audio>
+  <audio id="scratch-sound" src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" preload="auto"></audio>
+  <audio id="box-open-sound" src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c352fa103b.mp3" preload="auto"></audio>
+  <audio id="cheer-audio" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_12b2c9397e.mp3" preload="auto"></audio>
+  <audio id="welcome-surprise-audio" preload="auto"></audio>
+  <audio id="vibe-audio" loop></audio>
+  <audio id="voicenote-audio" preload="auto"></audio>
+
+  <!-- Floating Balloons Layer -->
+  <div class="balloon-container" id="balloonBox"></div>
+
+  <div class="container">
+    
+    <!-- 1. HERO PROFILE CARD -->
+    <div class="glass-card">
+      <img id="disp-photo" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" class="profile-hero" alt="Profile">
+      <div class="aesthetic-title-wrapper">
+        <span class="aesthetic-title-text" id="disp-name">Happy Birthday, Ananya</span> <span class="emoji-clean">✨</span>
+      </div>
+      <p style="font-size: 0.88rem; color: #a0a0b0;" id="disp-sub">Main Character Energy Always <span class="emoji-clean">🌸</span></p>
+
+      <div class="compact-counter-bar">
+        <div class="cnt-item"><div class="cnt-val" id="cnt-days">0</div><div class="cnt-lbl">Days</div></div>
+        <div class="cnt-item"><div class="cnt-val" id="cnt-hours">0</div><div class="cnt-lbl">Hours</div></div>
+        <div class="cnt-item"><div class="cnt-val" id="cnt-mins">0</div><div class="cnt-lbl">Mins</div></div>
+        <div class="cnt-item"><div class="cnt-val" id="cnt-secs">0</div><div class="cnt-lbl">Secs</div></div>
+      </div>
+    </div>
+
+    <!-- 3. PHOTO GALLERY CAROUSEL -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">📸</span> Unforgettable Moments</div>
+      <div class="carousel-box" id="carouselContainer"></div>
+    </div>
+
+    <!-- 4. PERSONALITY JUKEBOX -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">🎧</span> Choose Your Current Vibe</div>
+      <p style="font-size: 0.78rem; color: #aaa; margin-bottom: 10px;">Click to play or pause custom soundtrack!</p>
+      <div class="vibe-grid">
+        <button class="vibe-btn" id="btn-chill" onclick="toggleVibe('chill')"><span>☕ Chill Vibe</span> <span id="icon-chill">▶️</span></button>
+        <button class="vibe-btn" id="btn-gangster" onclick="toggleVibe('gangster')"><span>🕶️ Gangster/MC</span> <span id="icon-gangster">▶️</span></button>
+        <button class="vibe-btn" id="btn-moody" onclick="toggleVibe('moody')"><span>🌙 Moody Nights</span> <span id="icon-moody">▶️</span></button>
+        <button class="vibe-btn" id="btn-sad" onclick="toggleVibe('sad')"><span>🌧️ Soft / Sad</span> <span id="icon-sad">▶️</span></button>
+      </div>
+    </div>
+
+    <!-- 5. VECTOR CAKE & 3 ALIGNED CANDLES + MYSTERY BOXES -->
+    <div class="glass-card" id="cakeSectionCard">
+      <div class="section-title" id="cakeCardTitle"><span class="emoji-clean">🎂</span> Blow Candles & Make A Wish</div>
+      <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 10px;" id="cakeCardSub">Blow into microphone or click below!</p>
+      
+      <!-- CAKE WITH 3 PERFECTLY ALIGNED CANDLES -->
+      <div class="cake-svg-wrapper" id="cakeSvgWrapper">
+        <svg viewBox="0 0 200 180" width="100%" height="100%">
+          <ellipse cx="100" cy="160" rx="80" ry="12" fill="rgba(255,255,255,0.18)" />
+          <rect x="30" y="105" width="140" height="50" rx="14" fill="url(#cakeGrad1)" />
+          <path d="M30 105 Q 45 120, 60 105 T 90 105 T 120 105 T 150 105 T 170 105 L 170 100 L 30 105 Z" fill="#ffffff" opacity="0.4" />
+          <rect x="52" y="65" width="96" height="42" rx="12" fill="url(#cakeGrad2)" />
+          <path d="M52 65 Q 65 78, 78 65 T 104 65 T 130 65 T 148 65 L 148 60 L 52 65 Z" fill="#ffffff" opacity="0.6" />
+          <circle cx="70" cy="62" r="5" fill="#ff4757" />
+          <circle cx="100" cy="60" r="5" fill="#ff4757" />
+          <circle cx="130" cy="62" r="5" fill="#ff4757" />
+          
+          <!-- CANDLE 1 -->
+          <rect x="66" y="32" width="8" height="30" rx="3" fill="url(#candleGrad)" />
+          <g id="svgFlame1" class="flame-element">
+            <path d="M 70 12 C 63 22, 62 28, 70 32 C 78 28, 77 22, 70 12 Z" fill="#ffd700" />
+            <path d="M 70 18 C 66 24, 65 27, 70 30 C 75 27, 74 24, 70 18 Z" fill="#ff4500" />
+          </g>
+
+          <!-- CANDLE 2 -->
+          <rect x="96" y="32" width="8" height="30" rx="3" fill="url(#candleGrad)" />
+          <g id="svgFlame2" class="flame-element">
+            <path d="M 100 12 C 93 22, 92 28, 100 32 C 108 28, 107 22, 100 12 Z" fill="#ffd700" />
+            <path d="M 100 18 C 96 24, 95 27, 100 30 C 105 27, 104 24, 100 18 Z" fill="#ff4500" />
+          </g>
+
+          <!-- CANDLE 3 -->
+          <rect x="126" y="32" width="8" height="30" rx="3" fill="url(#candleGrad)" />
+          <g id="svgFlame3" class="flame-element">
+            <path d="M 130 12 C 123 22, 122 28, 130 32 C 138 28, 137 22, 130 12 Z" fill="#ffd700" />
+            <path d="M 130 18 C 126 24, 125 27, 130 30 C 135 27, 134 24, 130 18 Z" fill="#ff4500" />
+          </g>
+
+          <defs>
+            <linearGradient id="cakeGrad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff6b8b" /><stop offset="100%" stop-color="#8a2be2" /></linearGradient>
+            <linearGradient id="cakeGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fbc2eb" /><stop offset="100%" stop-color="#a6c1ee" /></linearGradient>
+            <linearGradient id="candleGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffffff" /><stop offset="100%" stop-color="#ff6b8b" /></linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- 3 MYSTERY BOXES -->
+      <div class="mystery-boxes-container" id="mysteryBoxesBox">
+        <div class="mystery-box" id="mBox1" onclick="openMysteryBox(1)">
+          <div class="box-icon" id="mIcon1">📦</div>
+          <div class="box-title" id="mTitle1">Box 1</div>
+        </div>
+        <div class="mystery-box" id="mBox2" onclick="openMysteryBox(2)">
+          <div class="box-icon" id="mIcon2">📦</div>
+          <div class="box-title" id="mTitle2">Box 2</div>
+        </div>
+        <div class="mystery-box" id="mBox3" onclick="openMysteryBox(3)">
+          <div class="box-icon" id="mIcon3">📦</div>
+          <div class="box-title" id="mTitle3">Box 3</div>
+        </div>
+      </div>
+
+      <button class="btn-action" id="micTriggerBtn" style="margin-top: 10px;" onclick="initMicBlow()">Click to Start Mic <span class="emoji-clean">🎤</span></button>
+    </div>
+
+    <!-- 6. FUNNY MEMES CAROUSEL -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">🤪</span> Funny & Meme Hall of Fame</div>
+      <div class="meme-carousel-box" id="memeCarouselContainer"></div>
+    </div>
+
+    <!-- 7. SCRATCH CARD SECTION -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">🎁</span> Birthday Treat Sponsor</div>
+      <p style="font-size: 0.8rem; color: #aaa;" id="disp-coupon-desc">Scratch the card below to reveal your treat coupon!</p>
+      
+      <div class="scratch-container" id="scratchContainer">
+        <div class="scratch-secret-content">
+          <p style="font-weight: 700; font-size: 1rem; color: #fff;" id="disp-coupon-title">🍕 Food Treat Sponsored By Me</p>
+          <div style="background: rgba(0,0,0,0.4); padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent-pink); margin-top: 8px; color: #ffd700; font-weight: bold; letter-spacing: 2px;" id="disp-coupon-code">
+            CODE: BDAY-TREAT-2026
+          </div>
+        </div>
+        <canvas class="scratch-canvas" id="scratchCanvas"></canvas>
+      </div>
+
+      <div class="coupon-info-card">
+        <span class="info-badge" id="disp-coupon-platform">Swiggy / Zomato Coupon</span>
+        <h4 style="font-size: 0.88rem; margin-bottom: 5px; color: #fff;" id="disp-coupon-where">Kahan Use Karein: Online Food Order App</h4>
+        <p style="font-size: 0.8rem; color: #aaa; line-height: 1.5;" id="disp-coupon-rules">
+          1. Go to Zomato/Swiggy App.<br>
+          2. Select your favorite food or dessert.<br>
+          3. Apply this promo code at checkout or send me a screenshot to claim your treat!
+        </p>
+      </div>
+    </div>
+
+    <!-- 8. QUALITIES SECTION -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">✨</span> Why You're Amazing</div>
+      <div class="qualities-flex" id="disp-qualities"></div>
+    </div>
+
+    <!-- 9. OPEN WHEN ENVELOPES -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">✉️</span> Open When...</div>
+      <div class="open-grid">
+        <div class="open-card" onclick="openEnvNote(1)">
+          <h4 id="disp-env1-title">🌧️ Open when sad</h4>
+          <p style="font-size:0.72rem; color:#aaa; margin-top:4px;">Click to read note</p>
+        </div>
+        <div class="open-card" onclick="openEnvNote(2)">
+          <h4 id="disp-env2-title">💭 Open when missing me</h4>
+          <p style="font-size:0.72rem; color:#aaa; margin-top:4px;">Click to read note</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. SPIN THE WHEEL OF FAVORS -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">🎡</span> Spin For A Birthday Favor</div>
+      <p style="font-size: 0.78rem; color: #aaa; margin-bottom: 5px;">Spin to claim your special birthday gift!</p>
+      <div class="wheel-container">
+        <div class="wheel-pointer"></div>
+        <canvas id="wheelCanvas" width="300" height="300"></canvas>
+      </div>
+      <button class="btn-action" style="margin-top: 10px; background: linear-gradient(45deg, #ff6b8b, #8a2be2);" onclick="spinWheel()">Click to Spin Wheel <span class="emoji-clean">🎯</span></button>
+    </div>
+
+    <!-- 11. ANCIENT SCROLL OF TRUTH -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">📜</span> Ancient Scroll of Truth</div>
+      <p style="font-size: 0.78rem; color: #aaa; margin-bottom: 12px;">Unroll the royal decree to reveal your official destiny!</p>
+      <button class="btn-action" style="background: linear-gradient(45deg, #332d56, #8a2be2);" onclick="openScrollModal()">Click to Unroll Scroll <span class="emoji-clean">📜</span></button>
+    </div>
+
+    <!-- 12. VIP RETRO VINYL VOICE NOTE -->
+    <div class="glass-card special-vip-card">
+      <div class="section-title" style="color: #ff6b8b;"><span class="emoji-clean">🎙️</span> Special Personal Voice Wish</div>
+      <p style="font-size: 0.78rem; color: #ddd;">Listen to a confidential voice note recorded for you!</p>
+      <div class="vinyl-wrapper">
+        <div class="vinyl-record" id="vinylRecord">
+          <div class="vinyl-center-label">VOICE<br>NOTE</div>
+        </div>
+      </div>
+      <button class="btn-action" style="margin-top: 5px; background: linear-gradient(45deg, #ff6b8b, #7b2cbf);" onclick="toggleVoiceNote()">Click to Play Voice Note <span class="emoji-clean">🎧</span></button>
+    </div>
+
+    <!-- 13. SECRET VAULT -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">🔒</span> Secret Message Vault</div>
+      <p style="font-size: 0.78rem; color: #aaa; margin-bottom: 10px;">Enter PIN to unlock</p>
+      
+      <div id="vault-lock">
+        <input type="password" id="vaultPin" class="vault-input" maxlength="4" placeholder="••••">
+        <button class="btn-action" onclick="checkPin()">Click to Unlock <span class="emoji-clean">🔓</span></button>
+      </div>
+    </div>
+
+    <!-- 14. SPECIAL LETTER BUTTON -->
+    <div class="glass-card">
+      <div class="section-title"><span class="emoji-clean">💌</span> Special Birthday Card</div>
+      <button class="btn-action" style="background: linear-gradient(45deg, #ff6b8b, #8a2be2);" onclick="openLetterModal()">Click to Open Letter <span class="emoji-clean">📜</span></button>
+    </div>
+
+    <!-- 15. AESTHETIC WHATSAPP DIRECT REPLY CARD -->
+    <div class="glass-card whatsapp-saas-card">
+      <div class="whatsapp-badge" id="disp-wa-badge"><span class="emoji-clean">💬</span> Express Gratitude</div>
+      <div class="section-title" style="color: #25d366;">Instant Reaction</div>
+      <p style="font-size: 0.8rem; color: #bbb; margin-bottom: 12px; line-height: 1.5;" id="disp-wa-expl">
+        💡 Kyun zaroori hai thanks kehna? Kyunki itni mehnat se bani magical website bina ek 'Thank You' ke adhuri lagti hai, aur receiver ka farz banta hai ki is khubsurat gesture ka pyara sa reply dekar dil khush kare! ❤️
+      </p>
+      <a id="whatsappBtn" href="#" target="_blank" class="btn-action" style="background: #25d366; color: #fff; width: 100%; box-shadow: 0 4px 15px rgba(37,211,102,0.3);">Click to Say Thanks <span class="emoji-clean">💬</span></a>
+    </div>
+
+    <!-- FOOTER TAG -->
+    <div style="text-align: center; margin-top: 25px; font-size: 0.75rem; color: #666; letter-spacing: 1px;" id="disp-footer">
+      Crafted with love & code ✨
+    </div>
+
+  </div>
+
+  <!-- AESTHETIC CUSTOM POPUP MODAL -->
+  <div class="modal-overlay" id="aestheticModal" onclick="handleBackdropClick(event, 'aestheticModal')">
+    <div class="popup-card">
+      <div class="close-cross-btn" onclick="closeAestheticModal()">×</div>
+      <div id="pop-icon" style="font-size: 4rem; margin-bottom: 12px; display: none; filter: drop-shadow(0 4px 12px rgba(255,107,139,0.5));"></div>
+      <h3 id="pop-title" style="color: #ff6b8b; margin-bottom: 12px; font-size: 1.45rem;">Note</h3>
+      <p id="pop-body" style="font-size: 1.05rem; line-height: 1.6; color: #e0e0e0;"></p>
+    </div>
+  </div>
+
+  <!-- ANCIENT SCROLL MODAL WITH TEXT & IMAGE -->
+  <div class="modal-overlay" id="scrollModal" onclick="handleBackdropClick(event, 'scrollModal')">
+    <div class="popup-card" style="background: #fdfbf7; color: #2c2c2c; border: 3px solid #d4af37;">
+      <div class="close-cross-btn" onclick="closeScrollModal()">×</div>
+      <div style="font-size: 2rem; margin-bottom: 5px;">👑</div>
+      <h3 style="color: #8b4513; margin-bottom: 10px; font-size: 1.3rem;" id="disp-scroll-title">📜 Royal Decree of Truth</h3>
+      <img id="disp-scroll-img" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400" style="width: 150px; height: 150px; object-fit: cover; border-radius: 12px; border: 2px solid #d4af37; margin: 10px auto; display: block;" alt="Scroll">
+      <p style="font-family: 'Caveat', cursive; font-size: 1.3rem; line-height: 1.5; color: #4a3525;" id="disp-scroll-text">By Royal Decree, let it be known that the bearer of this name is officially proclaimed the Main Character & Icon of the Year! ✨</p>
+    </div>
+  </div>
+
+  <!-- SPECIAL LETTER MODAL -->
+  <div class="modal-overlay" id="letterModal" onclick="handleBackdropClick(event, 'letterModal')">
+    <div class="popup-card" style="text-align: left;">
+      <div class="close-cross-btn" onclick="closeLetterModal()">×</div>
+      <h3 style="color: #ff6b8b; margin-bottom: 12px; text-align: center; font-size: 1.25rem;"><span class="emoji-clean">✨</span> Birthday Wish <span class="emoji-clean">✨</span></h3>
+      <div style="background: #fdfbf7; color: #222; font-family: 'Caveat', cursive; font-size: 1.35rem; padding: 20px; border-radius: 16px; line-height: 1.5;" id="disp-final-card"></div>
+    </div>
+  </div>
+
+  <!-- AESTHETIC GLASS ADMIN AUTH MODAL -->
+  <div class="modal-overlay" id="adminAuthModal" onclick="handleBackdropClick(event, 'adminAuthModal')">
+    <div class="popup-card" style="max-width: 380px;">
+      <div class="close-cross-btn" onclick="closeAdminAuthModal()">×</div>
+      <div style="font-size: 2.2rem; margin-bottom: 6px;"><span class="emoji-clean">⚙️</span></div>
+      <h3 style="color: #ff6b8b; margin-bottom: 6px; font-size: 1.25rem;">Admin Access</h3>
+      <p style="font-size: 0.82rem; color: #aaa; margin-bottom: 16px;">Enter Master Password to open settings</p>
+      <input type="password" id="adminAuthInput" class="vault-input" style="width: 88%; padding: 10px; margin-bottom: 18px; font-size: 1.1rem;" placeholder="Enter Password">
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button class="btn-action" style="flex: 1;" onclick="verifyAdminPass()">Unlock <span class="emoji-clean">✨</span></button>
+        <button class="btn-action" style="flex: 1; background: #332d56;" onclick="closeAdminAuthModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LUXURY SUPER ADMIN PANEL (SPACIOUS & LARGE TEXT) -->
+  <div class="modal-overlay" id="adminModal" onclick="handleBackdropClick(event, 'adminModal')">
+    <div class="admin-drawer">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1.5px solid rgba(255,255,255,0.12); padding-bottom: 15px;">
+        <h3 style="color: #ff6b8b; font-size: 1.5rem; display: flex; align-items: center; gap: 10px;"><span class="emoji-clean">⚡</span> Super Admin Panel</h3>
+        <div class="close-cross-btn" style="position: static;" onclick="closeAdmin()">×</div>
+      </div>
+
+      <!-- MYSTERY BOXES CUSTOMIZER -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">📦</span> Mystery Boxes Customizer (Box 1, 2, 3)</div>
+        <div class="admin-field-group">
+          <label>🍫 Box 1 Content Message (Chocolate/Treat)</label>
+          <textarea id="in-box1-text" rows="3">A sweet box filled with your favorite dark chocolates & treats is waiting for you! Enjoy the sweetness! ✨</textarea>
+        </div>
+        <div class="admin-field-group">
+          <label>🌹 Box 2 Content Message (Rose)</label>
+          <textarea id="in-box2-text" rows="3">A symbol of eternal affection, warmth, and appreciation, specially bloomed for this day! 💖</textarea>
+        </div>
+        <div class="admin-field-group">
+          <label>💌 Box 3 Content Message (Message)</label>
+          <textarea id="in-box3-text" rows="3">May this year bring boundless joy, success, and all the magical moments your heart desires! Keep shining! 🌟</textarea>
+        </div>
+      </div>
+
+      <!-- SOUND & AUDIO CUSTOMIZER -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">🎵</span> Sound & Audio Effects Customizer</div>
+        <div class="admin-field-group">
+          <label>🔨 Glass Shatter Sound URL</label>
+          <input type="text" id="in-glass-sound" value="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c3558c422c.mp3">
+        </div>
+        <div class="admin-field-group">
+          <label>✏️ Scratch Card Sound URL</label>
+          <input type="text" id="in-scratch-sound" value="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3">
+        </div>
+        <div class="admin-field-group">
+          <label>📦 Mystery Box Opening Sound URL</label>
+          <input type="text" id="in-box-open-sound" value="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c352fa103b.mp3">
+        </div>
+        <div class="admin-field-group">
+          <label>🎉 Candle Blow Celebration Song URL</label>
+          <input type="text" id="in-cheer-song" value="https://cdn.pixabay.com/download/audio/2021/08/04/audio_12b2c9397e.mp3">
+        </div>
+        <div class="admin-field-group">
+          <label>⏱️ Celebration Song Duration (in Seconds, e.g. 10)</label>
+          <input type="number" id="in-cheer-duration" value="10">
+        </div>
+      </div>
+
+      <!-- SECURITY & WHATSAPP CONFIG -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">🔑</span> Security & WhatsApp</div>
+        <div class="admin-field-group">
+          <label>Admin Master Password</label>
+          <input type="text" id="in-master-pass" value="king18">
+        </div>
+        <div class="admin-field-group">
+          <label>Sender WhatsApp Number (with country code e.g. 919876543210)</label>
+          <input type="text" id="in-whatsapp" value="919876543210">
+        </div>
+        <div class="admin-field-group">
+          <label>WhatsApp Pre-filled Message Text</label>
+          <input type="text" id="in-wa-text" value="OMG! Yeh surprise website kitni magical thi! Thank you so much for this! ❤️✨">
+        </div>
+        <div class="admin-field-group">
+          <label>WhatsApp Badge Title Text</label>
+          <input type="text" id="in-wa-badge" value="💬 Express Gratitude">
+        </div>
+        <div class="admin-field-group">
+          <label>WhatsApp Explanation Line (Majboori Text)</label>
+          <textarea id="in-wa-expl" rows="3">💡 Kyun zaroori hai thanks kehna? Kyunki itni mehnat se bani magical website bina ek 'Thank You' ke adhuri lagti hai, aur receiver ka farz banta hai ki is khubsurat gesture ka pyara sa reply dekar dil khush kare! ❤️</textarea>
+        </div>
+      </div>
+
+      <!-- WIDGETS & ANCIENT SCROLL CUSTOMIZER -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">📜</span> Ancient Scroll & Widgets Customizer</div>
+        <div class="admin-field-group">
+          <label>Birthdate For Live Counter (YYYY-MM-DD)</label>
+          <input type="text" id="in-birthdate" value="2002-05-15">
+        </div>
+        <div class="admin-field-group">
+          <label>🎙️ Voice Note MP3 Direct URL</label>
+          <input type="text" id="in-voicenote-url" value="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3">
+        </div>
+        <div class="admin-field-group">
+          <label>🎡 Spin Wheel Favors (Comma Separated)</label>
+          <input type="text" id="in-wheel-items" value="🍕 Pizza Treat, ☕ Long Drive, 🎬 Movie Night, 🍦 Ice Cream, 🤫 1 Secret Wish">
+        </div>
+        <div class="admin-field-group">
+          <label>📜 Scroll Title / Heading</label>
+          <input type="text" id="in-scroll-title" value="📜 Royal Decree of Truth">
+        </div>
+        <div class="admin-field-group">
+          <label>📜 Scroll Secret Text Message</label>
+          <textarea id="in-scroll-text" rows="3">By Royal Decree, let it be known that the bearer of this name is officially proclaimed the Main Character & Icon of the Year! ✨</textarea>
+        </div>
+        <div class="admin-field-group">
+          <label>📜 Scroll Image Direct URL</label>
+          <input type="text" id="in-scroll-img" value="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400">
+        </div>
+        <div class="admin-field-group">
+          <label>Footer Copyright Tag Line</label>
+          <input type="text" id="in-footer" value="Crafted with love & code ✨">
+        </div>
+      </div>
+
+      <!-- GLASS COVER -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">🔨</span> Glass Cover & Welcome Track</div>
+        <div class="admin-field-group">
+          <label>Glass Intro Tag & Sender Header</label>
+          <input type="text" id="in-intro-tag" value="A Special Gift For You">
+          <input type="text" id="in-intro-sender" value="Someone Sent You A Secret Surprise 🎁" style="margin-top:6px;">
+        </div>
+        <div class="admin-field-group">
+          <label>Glass Intro Subtitle</label>
+          <input type="text" id="in-intro-sub" value="Tap 3 times to break the glass & reveal!">
+        </div>
+      </div>
+
+      <!-- HERO PROFILE -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">👤</span> Hero Profile</div>
+        <div class="admin-field-group">
+          <label>Birthday Person Name / Main Title</label>
+          <input type="text" id="in-name" value="Happy Birthday, Ananya">
+        </div>
+        <div class="admin-field-group">
+          <label>Profile Picture URL</label>
+          <input type="text" id="in-photo" value="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400">
+        </div>
+      </div>
+
+      <!-- GALLERIES -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">🖼️</span> Photos & Memes</div>
+        <div class="admin-field-group">
+          <label>Gallery Photo URLs (Comma Separated)</label>
+          <textarea id="in-photos-list" rows="3">https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500,https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500,https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500</textarea>
+        </div>
+        <div class="admin-field-group">
+          <label>Funny Meme Photo URLs (Comma Separated)</label>
+          <textarea id="in-memes-list" rows="3">https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500,https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500,https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500</textarea>
+        </div>
+      </div>
+
+      <!-- COUPONS -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">🎁</span> Coupon & Treat Sponsor</div>
+        <div class="admin-field-group">
+          <label>Title, Code & Scratch Text</label>
+          <input type="text" id="in-coupon-title" value="🍕 Food Treat Sponsored By Me">
+          <input type="text" id="in-coupon-code" value="CODE: BDAY-TREAT-2026" style="margin-top:6px;">
+          <input type="text" id="in-scratch-text" value="✨ Scratch Here ✨" style="margin-top:6px;">
+        </div>
+        <div class="admin-field-group">
+          <label>Usage Info & Terms</label>
+          <input type="text" id="in-coupon-platform" value="Swiggy / Zomato Coupon">
+          <input type="text" id="in-coupon-where" value="Kahan Use Karein: Online Food Order App" style="margin-top:6px;">
+          <textarea id="in-coupon-rules" rows="3" style="margin-top:6px;">1. Go to Zomato/Swiggy App.
+2. Select your favorite food or dessert.
+3. Apply code or send screenshot to claim!</textarea>
+        </div>
+      </div>
+
+      <!-- MUSIC JUKEBOX -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">🎧</span> Personality Songs (.mp3 URLs)</div>
+        <div class="admin-field-group">
+          <label>Chill Vibe Song</label>
+          <input type="text" id="song-chill" value="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3">
+          <label style="margin-top:8px;">Gangster / Main Character</label>
+          <input type="text" id="song-gangster" value="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3">
+          <label style="margin-top:8px;">Moody Nights</label>
+          <input type="text" id="song-moody" value="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3">
+          <label style="margin-top:8px;">Soft / Sad</label>
+          <input type="text" id="song-sad" value="https://cdn.pixabay.com/download/audio/2021/08/09/audio_a0a56d9a18.mp3">
+        </div>
+      </div>
+
+      <!-- VAULT & CARD -->
+      <div class="admin-grid-card">
+        <div class="admin-card-head"><span class="emoji-clean">💌</span> Messages & Secret Vault</div>
+        <div class="admin-field-group">
+          <label>Qualities (Comma Separated Tags)</label>
+          <input type="text" id="in-qualities" value="Pure Vibe 💫, Best Music Taste 🎧, Effortlessly Cute 😊, Pure Heart ❤️">
+        </div>
+        <div class="admin-field-group">
+          <label>Open When... Note 1 Title & Message</label>
+          <input type="text" id="env1-title-in" value="🌧️ Open when sad">
+          <input type="text" id="env1-msg" value="Remember that you are extremely special and loved! Smile please! 😊" style="margin-top:6px;">
+        </div>
+        <div class="admin-field-group">
+          <label>Open When... Note 2 Title & Message</label>
+          <input type="text" id="env2-title-in" value="💭 Open when missing me">
+          <input type="text" id="env2-msg" value="Just text me 'I miss you' and I'll drop everything for you! ✨" style="margin-top:6px;">
+        </div>
+        <div class="admin-field-group">
+          <label>Secret Vault PIN & Message</label>
+          <input type="text" id="in-pin" value="1234">
+          <textarea id="in-secret" rows="3" style="margin-top:6px;">Honestly, you make everyday a lot more interesting just by being in it. Hope this year brings you all the magic in the world!</textarea>
+        </div>
+        <div class="admin-field-group">
+          <label>Final Birthday Card Letter</label>
+          <textarea id="in-final-card" rows="4">Dear Birthday Person, May your year ahead be as bright, beautiful, and genuine as your heart. Never stop shining! 🌸</textarea>
+        </div>
+      </div>
+
+      <button class="btn-action" style="width: 100%; padding: 16px; margin-top: 10px; font-size: 1.1rem; background: linear-gradient(45deg, #ff6b8b, #8a2be2); box-shadow: 0 8px 25px rgba(255,107,139,0.4);" onclick="saveAndDownload()">Save & Download Final File <span class="emoji-clean">📥</span></button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+  <script>
+    const configData = document.getElementById('security-config');
+    let masterPassword = configData.getAttribute('data-master') || "king18";
+    let secretPin = configData.getAttribute('data-pin') || "1234";
+    let birthDateStr = configData.getAttribute('data-birthdate') || "2002-05-15";
+    let senderWhatsapp = configData.getAttribute('data-whatsapp') || "919876543210";
+    let waCustomText = configData.getAttribute('data-wa-text') || "OMG! Yeh surprise website kitni magical thi! Thank you so much for this! ❤️✨";
+    let waBadgeStr = configData.getAttribute('data-wa-badge') || "💬 Express Gratitude";
+    let waExplStr = configData.getAttribute('data-wa-expl') || "💡 Kyun zaroori hai thanks kehna? Kyunki itni mehnat se bani magical website bina ek 'Thank You' ke adhuri lagti hai, aur receiver ka farz banta hai ki is khubsurat gesture ka pyara sa reply dekar dil khush kare! ❤️";
+    let footerTagStr = configData.getAttribute('data-footer') || "Crafted with love & code ✨";
+    
+    let box1ContentText = configData.getAttribute('data-box1-text') || "A sweet box filled with your favorite dark chocolates & treats is waiting for you! Enjoy the sweetness! ✨";
+    let box2ContentText = configData.getAttribute('data-box2-text') || "A symbol of eternal affection, warmth, and appreciation, specially bloomed for this day! 💖";
+    let box3ContentText = configData.getAttribute('data-box3-text') || "May this year bring boundless joy, success, and all the magical moments your heart desires! Keep shining! 🌟";
+
+    let glassTapCount = 3;
+    let scratchCoverText = "✨ Scratch Here ✨";
+    let ambientConfettiTimer = null;
+
+    let env1TitleVal = "🌧️ Open when sad";
+    let env1MsgVal = "Remember that you are extremely special and loved! Smile please! 😊";
+    let env2TitleVal = "💭 Open when missing me";
+    let env2MsgVal = "Just text me 'I miss you' and I'll drop everything for you! ✨";
+    let secretVaultMsgVal = "Honestly, you make everyday a lot more interesting just by being in it. Hope this year brings you all the magic in the world!";
+
+    const audio = document.getElementById('vibe-audio');
+    const welcomeAudio = document.getElementById('welcome-surprise-audio');
+    const cheerAudio = document.getElementById('cheer-audio');
+    const glassSound = document.getElementById('glass-sound');
+    const scratchSound = document.getElementById('scratch-sound');
+    const boxOpenSound = document.getElementById('box-open-sound');
+    const voiceNoteAudio = document.getElementById('voicenote-audio');
+    let activeVibe = null;
+
+    function updateWhatsAppLink() {
+      const btn = document.getElementById('whatsappBtn');
+      const text = encodeURIComponent(waCustomText);
+      btn.href = `https://wa.me/${senderWhatsapp}?text=${text}`;
+      document.getElementById('disp-wa-badge').innerHTML = `<span class="emoji-clean">💬</span> ` + waBadgeStr.replace('💬','').trim();
+      document.getElementById('disp-wa-expl').innerHTML = waExplStr;
+    }
+    updateWhatsAppLink();
+
+    function openScrollModal() {
+      document.getElementById('scrollModal').classList.add('active');
+      confetti({ particleCount: 90, spread: 65, origin: { y: 0.6 } });
+    }
+    function closeScrollModal() {
+      document.getElementById('scrollModal').classList.remove('active');
+    }
+
+    function startAmbientConfetti() {
+      if(ambientConfettiTimer) clearInterval(ambientConfettiTimer);
+      ambientConfettiTimer = setInterval(() => {
+        confetti({ particleCount: 4, angle: 60, spread: 60, origin: { x: 0, y: 0.7 }, colors: ['#ff6b8b', '#8a2be2', '#ffd700'] });
+        confetti({ particleCount: 4, angle: 120, spread: 60, origin: { x: 1, y: 0.7 }, colors: ['#ff6b8b', '#8a2be2', '#ffd700'] });
+      }, 1500);
+    }
+
+    function stopAllAudioTracks() {
+      try {
+        if(audio) { audio.pause(); audio.currentTime = 0; }
+        if(welcomeAudio) { welcomeAudio.pause(); welcomeAudio.currentTime = 0; }
+        if(voiceNoteAudio) { voiceNoteAudio.pause(); voiceNoteAudio.currentTime = 0; }
+        if(cheerAudio) { cheerAudio.pause(); cheerAudio.currentTime = 0; }
+      } catch(e) {}
+      document.querySelectorAll('.vibe-btn').forEach(btn => btn.classList.remove('playing'));
+      ['chill', 'gangster', 'moody', 'sad'].forEach(v => {
+        const icon = document.getElementById(`icon-${v}`);
+        if(icon) icon.innerText = "▶️";
+      });
+      document.getElementById('vinylRecord').classList.remove('spinning');
+      activeVibe = null;
+    }
+
+    function unlockAudioContext() {
+      try {
+        glassSound.play().then(() => { glassSound.pause(); glassSound.currentTime = 0; }).catch(() => {});
+        scratchSound.play().then(() => { scratchSound.pause(); scratchSound.currentTime = 0; }).catch(() => {});
+        boxOpenSound.play().then(() => { boxOpenSound.pause(); boxOpenSound.currentTime = 0; }).catch(() => {});
+        cheerAudio.play().then(() => { cheerAudio.pause(); cheerAudio.currentTime = 0; }).catch(() => {});
+      } catch(e) {}
+      window.removeEventListener('click', unlockAudioContext);
+      window.removeEventListener('touchstart', unlockAudioContext);
+    }
+    window.addEventListener('click', unlockAudioContext);
+    window.addEventListener('touchstart', unlockAudioContext);
+
+    function updateCounter() {
+      const birthDate = new Date(birthDateStr);
+      const now = new Date();
+      const diff = now - birthDate;
+      if(diff > 0) {
+        document.getElementById('cnt-days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('cnt-hours').innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        document.getElementById('cnt-mins').innerText = Math.floor((diff / 1000 / 60) % 60);
+        document.getElementById('cnt-secs').innerText = Math.floor((diff / 1000) % 60);
+      }
+    }
+    setInterval(updateCounter, 1000);
+
+    function toggleVoiceNote() {
+      const vinyl = document.getElementById('vinylRecord');
+      const voiceUrl = document.getElementById('in-voicenote-url').value;
+      if (!voiceNoteAudio.paused) {
+        voiceNoteAudio.pause();
+        vinyl.classList.remove('spinning');
+      } else {
+        stopAllAudioTracks();
+        if(voiceUrl) {
+          voiceNoteAudio.src = voiceUrl;
+          voiceNoteAudio.play().then(() => { vinyl.classList.add('spinning'); }).catch(e => console.log(e));
+        }
+      }
+    }
+
+    let wheelItems = ["🍕 Pizza Party", "☕ Long Drive", "🎬 Movie Night", "🍦 Ice Cream", "🤫 1 Secret Wish"];
+    let isSpinning = false;
+    
+    function drawWheel() {
+      const canvas = document.getElementById('wheelCanvas');
+      const ctx = canvas.getContext('2d');
+      const numSegments = wheelItems.length;
+      const angle = (2 * Math.PI) / numSegments;
+      const colors = ['#ff6b8b', '#8a2be2', '#7b2cbf', '#fbc2eb', '#4834d4', '#6c5ce7'];
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < numSegments; i++) {
+        ctx.beginPath();
+        ctx.fillStyle = colors[i % colors.length];
+        ctx.moveTo(150, 150);
+        ctx.arc(150, 150, 145, i * angle, (i + 1) * angle);
+        ctx.fill();
+        ctx.stroke();
+        ctx.save();
+        ctx.translate(150, 150);
+        ctx.rotate(i * angle + angle / 2);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 13px Plus Jakarta Sans";
+        ctx.textAlign = "right";
+        ctx.fillText(wheelItems[i], 130, 5);
+        ctx.restore();
+      }
+    }
+
+    function spinWheel() {
+      if (isSpinning) return;
+      isSpinning = true;
+      const canvas = document.getElementById('wheelCanvas');
+      const randomRot = Math.floor(1800 + Math.random() * 1800);
+      canvas.style.transition = "transform 4s cubic-bezier(0.15, 0.9, 0.2, 1)";
+      canvas.style.transform = `rotate(${randomRot}deg)`;
+      setTimeout(() => {
+        isSpinning = false;
+        const actualDeg = randomRot % 360;
+        const segmentDeg = 360 / wheelItems.length;
+        const winningIndex = Math.floor((360 - actualDeg + 270) % 360 / segmentDeg);
+        confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } });
+        openAestheticModal("🎉 You Won!", `Congrats! You won: ${wheelItems[winningIndex] || wheelItems[0]}`);
+      }, 4100);
+    }
+
+    function handleGlassTap(e) {
+      if(e) e.stopPropagation();
+      const glass = document.getElementById('glassIntro');
+      const crack1 = document.getElementById('crackOverlay1');
+      const crack2 = document.getElementById('crackOverlay2');
+      
+      const customGlassUrl = document.getElementById('in-glass-sound').value;
+      if(customGlassUrl && glassSound.src !== customGlassUrl) glassSound.src = customGlassUrl;
+
+      try { glassSound.cloneNode().play().catch(() => {}); } catch(err) {}
+      glassTapCount--;
+      glass.classList.add('shake');
+      setTimeout(() => glass.classList.remove('shake'), 300);
+      if (glassTapCount === 2) {
+        crack1.style.opacity = "1";
+        document.getElementById('tapCounterText').innerText = "Taps remaining: 2";
+      } else if (glassTapCount === 1) {
+        crack2.style.opacity = "1";
+        document.getElementById('tapCounterText').innerText = "Taps remaining: 1";
+      } else if (glassTapCount <= 0) {
+        document.getElementById('tapCounterText').innerText = "Shattering! ✨";
+        glass.classList.add('shattered');
+        confetti({ particleCount: 140, spread: 85, origin: { y: 0.5 } });
+        startAmbientConfetti();
+      }
+    }
+
+    function handleBackdropClick(e, modalId) {
+      if (e.target.id === modalId) document.getElementById(modalId).classList.remove('active');
+    }
+
+    function openAdminPrompt() {
+      document.getElementById('adminAuthInput').value = '';
+      document.getElementById('adminAuthModal').classList.add('active');
+    }
+    function closeAdminAuthModal() { document.getElementById('adminAuthModal').classList.remove('active'); }
+
+    function verifyAdminPass() {
+      if (document.getElementById('adminAuthInput').value === masterPassword) {
+        closeAdminAuthModal();
+        document.getElementById('adminModal').classList.add('active');
+      } else {
+        closeAdminAuthModal();
+        openAestheticModal("Vault Locked 🔒", "Incorrect Admin Password!");
+      }
+    }
+
+    function openAestheticModal(title, text, iconHtml = "") {
+      const iconEl = document.getElementById('pop-icon');
+      if(iconHtml) {
+        iconEl.innerHTML = iconHtml;
+        iconEl.style.display = 'block';
+      } else {
+        iconEl.style.display = 'none';
+      }
+      document.getElementById('pop-title').innerText = title;
+      document.getElementById('pop-body').innerText = text;
+      document.getElementById('aestheticModal').classList.add('active');
+    }
+    function closeAestheticModal() { document.getElementById('aestheticModal').classList.remove('active'); }
+
+    function openLetterModal() {
+      document.getElementById('letterModal').classList.add('active');
+      confetti({ particleCount: 100, spread: 70 });
+    }
+    function closeLetterModal() { document.getElementById('letterModal').classList.remove('active'); }
+
+    function openEnvNote(num) {
+      if(num === 1) openAestheticModal(env1TitleVal, env1MsgVal);
+      if(num === 2) openAestheticModal(env2TitleVal, env2MsgVal);
+    }
+
+    function toggleVibe(vibeType) {
+      const songUrl = document.getElementById(`song-${vibeType}`).value;
+      if (activeVibe === vibeType && !audio.paused) {
+        audio.pause();
+        document.getElementById(`icon-${vibeType}`).innerText = "▶️";
+        document.getElementById(`btn-${vibeType}`).classList.remove('playing');
+        activeVibe = null;
+      } else {
+        stopAllAudioTracks();
+        audio.src = songUrl;
+        audio.play().catch(() => {});
+        activeVibe = vibeType;
+        document.getElementById(`icon-${vibeType}`).innerText = "⏸️";
+        document.getElementById(`btn-${vibeType}`).classList.add('playing');
+      }
+    }
+
+    function initMicBlow() {
+      stopAllAudioTracks();
+      const cheerUrl = document.getElementById('in-cheer-song').value;
+      const durationSec = parseInt(document.getElementById('in-cheer-duration').value) || 10;
+      if(cheerUrl) cheerAudio.src = cheerUrl;
+
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const analyser = audioCtx.createAnalyser();
+        const microphone = audioCtx.createMediaStreamSource(stream);
+        microphone.connect(analyser);
+        analyser.fftSize = 256;
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+        function detectBlow() {
+          analyser.getByteFrequencyData(dataArray);
+          let sum = 0;
+          for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+          if ((sum / dataArray.length) > 35) {
+            document.querySelectorAll('.flame-element').forEach(f => f.classList.add('off'));
+            
+            cheerAudio.currentTime = 0;
+            cheerAudio.play().catch(() => {});
+            setTimeout(() => {
+              try { cheerAudio.pause(); } catch(e) {}
+            }, durationSec * 1000);
+
+            triggerCelebrationWithoutPopup();
+            stream.getTracks().forEach(track => track.stop());
+          } else {
+            requestAnimationFrame(detectBlow);
+          }
+        }
+        detectBlow();
+      }).catch(err => {
+        document.querySelectorAll('.flame-element').forEach(f => f.classList.add('off'));
+        cheerAudio.currentTime = 0;
+        cheerAudio.play().catch(() => {});
+        setTimeout(() => { try { cheerAudio.pause(); } catch(e) {} }, durationSec * 1000);
+        triggerCelebrationWithoutPopup();
+      });
+    }
+
+    function triggerCelebrationWithoutPopup() {
+      confetti({ particleCount: 250, spread: 120, origin: { y: 0.6 } });
+      
+      const balloonBox = document.getElementById('balloonBox');
+      balloonBox.style.display = 'block';
+      balloonBox.innerHTML = '';
+      const colors = ['#ff6b8b', '#a6c1ee', '#fbc2eb', '#ffd700', '#8a2be2'];
+      for (let i = 0; i < 22; i++) {
+        const b = document.createElement('div');
+        b.className = 'balloon-item';
+        b.style.left = `${Math.random() * 95}%`;
+        b.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        b.style.animationDelay = `${Math.random() * 2}s`;
+        balloonBox.appendChild(b);
+      }
+
+      document.getElementById('cakeSvgWrapper').style.display = 'none';
+      document.getElementById('micTriggerBtn').style.display = 'none';
+      document.getElementById('cakeCardTitle').innerHTML = '<span class="emoji-clean">✨</span> Choose Your Mystery Surprise!';
+      document.getElementById('cakeCardSub').innerText = 'Tap any box below to unveil your special gift!';
+      document.getElementById('mysteryBoxesBox').style.display = 'grid';
+    }
+
+    function openMysteryBox(boxNum) {
+      confetti({ particleCount: 90, spread: 60, origin: { y: 0.6 } });
+      
+      const customBoxOpenUrl = document.getElementById('in-box-open-sound').value;
+      if(customBoxOpenUrl && boxOpenSound.src !== customBoxOpenUrl) boxOpenSound.src = customBoxOpenUrl;
+      boxOpenSound.currentTime = 0;
+      boxOpenSound.play().catch(() => {});
+
+      const boxEl = document.getElementById(`mBox${boxNum}`);
+      const iconEl = document.getElementById(`mIcon${boxNum}`);
+      boxEl.classList.add('opened');
+      iconEl.innerText = '📭';
+
+      if(boxNum === 1) {
+        openAestheticModal("🍫 Sweet Chocolate Surprise!", box1ContentText, "🍫");
+      } else if(boxNum === 2) {
+        openAestheticModal("🌹 Eternal Rose Bloom!", box2ContentText, "🌹");
+      } else if(boxNum === 3) {
+        openAestheticModal("💌 Heartfelt Wish!", box3ContentText, "💌");
+      }
+    }
+
+    function initScratchCard() {
+      const canvas = document.getElementById('scratchCanvas');
+      const ctx = canvas.getContext('2d');
+      const container = document.getElementById('scratchContainer');
+      canvas.width = container.offsetWidth;
+      canvas.height = container.offsetHeight;
+      const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      grad.addColorStop(0, '#ff6b8b');
+      grad.addColorStop(1, '#8a2be2');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 16px Plus Jakarta Sans';
+      ctx.textAlign = 'center';
+      ctx.fillText(scratchCoverText, canvas.width / 2, canvas.height / 2 + 6);
+
+      let isScratching = false;
+      const customScratchUrl = document.getElementById('in-scratch-sound').value;
+      if(customScratchUrl && scratchSound.src !== customScratchUrl) scratchSound.src = customScratchUrl;
+
+      function startScratch(e) {
+        isScratching = true;
+        scratchSound.currentTime = 0;
+        scratchSound.loop = true;
+        scratchSound.play().catch(() => {});
+        scratch(e);
+      }
+
+      function stopScratch() {
+        if(isScratching) {
+          isScratching = false;
+          scratchSound.pause();
+          scratchSound.currentTime = 0;
+        }
+      }
+
+      function scratch(e) {
+        if (!isScratching) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 22, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      canvas.addEventListener('mousedown', startScratch);
+      canvas.addEventListener('mouseup', stopScratch);
+      canvas.addEventListener('mouseleave', stopScratch);
+      canvas.addEventListener('mousemove', scratch);
+      
+      canvas.addEventListener('touchstart', startScratch);
+      canvas.addEventListener('touchend', stopScratch);
+      canvas.addEventListener('touchcancel', stopScratch);
+      canvas.addEventListener('touchmove', scratch);
+    }
+
+    let currentSlide = 0;
+    let carouselInterval = null;
+    function renderGallery(urlArray) {
+      const container = document.getElementById('carouselContainer');
+      container.innerHTML = '';
+      urlArray.forEach((url, index) => {
+        const img = document.createElement('img');
+        img.src = url.trim();
+        img.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+        container.appendChild(img);
+      });
+      if (carouselInterval) clearInterval(carouselInterval);
+      startCarousel();
+    }
+
+    function startCarousel() {
+      const slides = document.querySelectorAll('.carousel-slide');
+      if (slides.length <= 1) return;
+      carouselInterval = setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 3500);
+    }
+
+    let currentMeme = 0;
+    let memeInterval = null;
+    function renderMemes(urlArray) {
+      const container = document.getElementById('memeCarouselContainer');
+      container.innerHTML = '';
+      const captions = ["Gotta love this face 🤪", "Main Character Energy 😎", "Unfiltered Vibe 📸", "Core Memory 💫"];
+      urlArray.forEach((url, i) => {
+        const slide = document.createElement('div');
+        slide.className = `meme-slide ${i === 0 ? 'active' : ''}`;
+        slide.innerHTML = `<img src="${url.trim()}"><div class="meme-caption-bar">${captions[i % captions.length]}</div>`;
+        container.appendChild(slide);
+      });
+      if (memeInterval) clearInterval(memeInterval);
+      startMemeCarousel();
+    }
+
+    function startMemeCarousel() {
+      const slides = document.querySelectorAll('.meme-slide');
+      if (slides.length <= 1) return;
+      memeInterval = setInterval(() => {
+        slides[currentMeme].classList.remove('active');
+        currentMeme = (currentMeme + 1) % slides.length;
+        slides[currentMeme].classList.add('active');
+      }, 4000);
+    }
+
+    function renderQualities(qualitiesArray) {
+      const flex = document.getElementById('disp-qualities');
+      flex.innerHTML = '';
+      qualitiesArray.forEach(q => {
+        const pill = document.createElement('div');
+        pill.className = 'quality-pill';
+        pill.innerText = q.trim();
+        flex.appendChild(pill);
+      });
+    }
+
+    function checkPin() {
+      if (document.getElementById('vaultPin').value === secretPin) {
+        openAestheticModal("Vault Unlocked 🔒✨", secretVaultMsgVal, "🔒");
+        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+      } else { openAestheticModal("Vault Locked 🔒", "Incorrect PIN!", "⚠️"); }
+    }
+
+    function closeAdmin() { document.getElementById('adminModal').classList.remove('active'); }
+
+    function saveAndDownload() {
+      document.getElementById('disp-intro-tag').innerText = document.getElementById('in-intro-tag').value;
+      document.getElementById('disp-intro-sender').innerText = document.getElementById('in-intro-sender').value;
+      document.getElementById('disp-intro-sub').innerText = document.getElementById('in-intro-sub').value;
+      document.getElementById('disp-name').innerText = document.getElementById('in-name').value;
+      document.getElementById('disp-photo').src = document.getElementById('in-photo').value;
+      
+      birthDateStr = document.getElementById('in-birthdate').value;
+      senderWhatsapp = document.getElementById('in-whatsapp').value.trim();
+      waCustomText = document.getElementById('in-wa-text').value;
+      waBadgeStr = document.getElementById('in-wa-badge').value;
+      waExplStr = document.getElementById('in-wa-expl').value;
+      footerTagStr = document.getElementById('in-footer').value;
+
+      box1ContentText = document.getElementById('in-box1-text').value;
+      box2ContentText = document.getElementById('in-box2-text').value;
+      box3ContentText = document.getElementById('in-box3-text').value;
+
+      document.getElementById('disp-footer').innerText = footerTagStr;
+      wheelItems = document.getElementById('in-wheel-items').value.split(',').map(s => s.trim());
+      drawWheel();
+      updateWhatsAppLink();
+
+      document.getElementById('disp-scroll-title').innerText = document.getElementById('in-scroll-title').value;
+      document.getElementById('disp-scroll-text').innerText = document.getElementById('in-scroll-text').value;
+      document.getElementById('disp-scroll-img').src = document.getElementById('in-scroll-img').value;
+
+      renderGallery(document.getElementById('in-photos-list').value.split(','));
+      renderMemes(document.getElementById('in-memes-list').value.split(','));
+      renderQualities(document.getElementById('in-qualities').value.split(','));
+
+      document.getElementById('disp-coupon-title').innerText = document.getElementById('in-coupon-title').value;
+      document.getElementById('disp-coupon-code').innerText = document.getElementById('in-coupon-code').value;
+      scratchCoverText = document.getElementById('in-scratch-text').value;
+      document.getElementById('disp-coupon-platform').innerText = document.getElementById('in-coupon-platform').value;
+      document.getElementById('disp-coupon-where').innerText = document.getElementById('in-coupon-where').value;
+      document.getElementById('disp-coupon-rules').innerText = document.getElementById('in-coupon-rules').value;
+
+      env1TitleVal = document.getElementById('env1-title-in').value;
+      env1MsgVal = document.getElementById('env1-msg').value;
+      env2TitleVal = document.getElementById('env2-title-in').value;
+      env2MsgVal = document.getElementById('env2-msg').value;
+      document.getElementById('disp-env1-title').innerText = env1TitleVal;
+      document.getElementById('disp-env2-title').innerText = env2TitleVal;
+
+      secretVaultMsgVal = document.getElementById('in-secret').value;
+      document.getElementById('disp-final-card').innerText = document.getElementById('in-final-card').value;
+
+      masterPassword = document.getElementById('in-master-pass').value;
+      secretPin = document.getElementById('in-pin').value;
+      
+      configData.setAttribute('data-master', masterPassword);
+      configData.setAttribute('data-pin', secretPin);
+      configData.setAttribute('data-birthdate', birthDateStr);
+      configData.setAttribute('data-whatsapp', senderWhatsapp);
+      configData.setAttribute('data-wa-text', waCustomText);
+      configData.setAttribute('data-wa-badge', waBadgeStr);
+      configData.setAttribute('data-wa-expl', waExplStr);
+      configData.setAttribute('data-footer', footerTagStr);
+      configData.setAttribute('data-scroll-title', document.getElementById('in-scroll-title').value);
+      configData.setAttribute('data-scroll-text', document.getElementById('in-scroll-text').value);
+      configData.setAttribute('data-scroll-img', document.getElementById('in-scroll-img').value);
+      configData.setAttribute('data-glass-sound-url', document.getElementById('in-glass-sound').value);
+      configData.setAttribute('data-scratch-sound-url', document.getElementById('in-scratch-sound').value);
+      configData.setAttribute('data-box-open-sound-url', document.getElementById('in-box-open-sound').value);
+      configData.setAttribute('data-cheer-song-url', document.getElementById('in-cheer-song').value);
+      configData.setAttribute('data-cheer-duration', document.getElementById('in-cheer-duration').value);
+      configData.setAttribute('data-box1-text', box1ContentText);
+      configData.setAttribute('data-box2-text', box2ContentText);
+      configData.setAttribute('data-box3-text', box3ContentText);
+
+      document.querySelectorAll('input').forEach(input => {
+        if(input.type === 'text' || input.type === 'password' || input.type === 'number') input.setAttribute('value', input.value);
+      });
+      document.querySelectorAll('textarea').forEach(ta => ta.textContent = ta.value);
+
+      closeAdmin();
+      const glass = document.getElementById('glassIntro');
+      glass.classList.remove('shattered', 'shake');
+      glass.style.visibility = "visible";
+      glassTapCount = 3;
+      document.getElementById('tapCounterText').innerText = "Taps remaining: 3";
+      document.getElementById('crackOverlay1').style.opacity = "0";
+      document.getElementById('crackOverlay2').style.opacity = "0";
+
+      initScratchCard();
+
+      let htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      let blob = new Blob([htmlContent], { type: "text/html" });
+      let a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      let safeName = document.getElementById('in-name').value.replace(/[^a-zA-Z0-9]/g, '_') || "client";
+      a.download = safeName + "_Surprise.html";
+      a.click();
+    }
+
+    window.onload = () => {
+      renderGallery(document.getElementById('in-photos-list').value.split(','));
+      renderMemes(document.getElementById('in-memes-list').value.split(','));
+      renderQualities(document.getElementById('in-qualities').value.split(','));
+      
+      env1TitleVal = document.getElementById('env1-title-in').value;
+      env1MsgVal = document.getElementById('env1-msg').value;
+      env2TitleVal = document.getElementById('env2-title-in').value;
+      env2MsgVal = document.getElementById('env2-msg').value;
+      secretVaultMsgVal = document.getElementById('in-secret').value;
+
+      document.getElementById('disp-final-card').innerText = document.getElementById('in-final-card').value;
+      document.getElementById('disp-footer').innerText = footerTagStr;
+      initScratchCard();
+      drawWheel();
+      updateCounter();
+      updateWhatsAppLink();
+    };
+  </script>
+</body>
+</html>
